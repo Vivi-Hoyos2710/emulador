@@ -15,7 +15,7 @@ public:
      Pantalla(int x,int y,string strColor,Registro* objRegistro);
     //Pantalla(int x,int y,string strColor,Memoria* memoria);
     ~Pantalla();
-    void pintar();
+    void pintar(); 
 };
 
 
