@@ -11,12 +11,15 @@ private:
     int posY;
     string strColor;
     Registro objRegistro;
-public:
-     Pantalla(int x,int y,string strColor,Registro* objRegistro);
-    //Pantalla(int x,int y,string strColor,Memoria* memoria);
-    ~Pantalla();
-    void pintar(); 
-};
+    Memoria objMemoria;
+    string strValor;
 
+public:
+    Pantalla(int x, int y, string strColor, Registro *objRegistro);
+    Pantalla(int x, int y, string strColor, Memoria *memoria);
+    Pantalla(int x, int y, string strColor, string valor);
+    ~Pantalla();
+    void pintar();
+};
 
 #endif
