@@ -86,7 +86,7 @@ void CPUHack::iniciar(string strPrograma)
 
 	for(int i = 0; i < 11; i++)
 	{
-		clear();
+		//clear(); para que es ese clear?
 		objRegistroA->escribir(to_string(i));
 		objRegistroD->escribir(to_string(i+1));
 		objPC->escribir(to_string(i+2));
@@ -106,7 +106,7 @@ void CPUHack::iniciar(string strPrograma)
 		cout << "Presione 1 y ENTER para continuar...";
 		cin >> posicion;
 	}
-	clear();
+	//clear(); para que??
 
 #ifdef DEBUG
 	cout << "Prueba 7: se visualizan los registros creados y se pintan." << "\n";
@@ -120,7 +120,7 @@ void CPUHack::iniciar(string strPrograma)
 	temp3->pintar();
 	cout << "\nPresione 1 y ENTER para continuar...";
 	cin >> posicion;
-	clear();
+	//clear(); para que?
 	posicion = "";
 	
 #ifdef DEBUG

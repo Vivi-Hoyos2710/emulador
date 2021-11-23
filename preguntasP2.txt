@@ -1,0 +1,22 @@
+-nombre en registro se refiere a PC A D??
+
+-en registro tambien pondremos registro M?  -> posicionROM y posicionRAM
+
+-se puede cambiar el arraylist por vector
+
+-se puede llenar de lo que sea inicialmente?
+
+- objeto memoria de tipo registro
+
+---------------------------------------
+-entrega anterior?
+    nuevo nuevo 
+
+- HackRT 
+    -> nombre del ejecutable
+
+- interfaz grafica
+- mostrar paso a paso
+    preocuoacion de cpu
+
+------------------------------
