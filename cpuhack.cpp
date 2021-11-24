@@ -4,6 +4,7 @@
 #include "memoria.h"
 #include "pantalla.h"
 
+#define clear() cout << "\033[H\033[J"
 #define DEBUG
 using namespace std;
 
@@ -81,62 +82,68 @@ void CPUHack::iniciar(string strPrograma)
 	cout << "Prueba 6: Ciclo para llenar la RAM y la ROM." << "\n";
 	cout << "          Se agrega escritura en cada ciclo a los registros A, D y PC" << "\n";
 	cout << "          Se llevan valores a RAM, ROM y se lee el contenido de la RAM" << "\n";
-	cout << "          Al leer, en RAM debe salir un número, en ROM el número + 1 y debe ser igual el contenido." << "\n";
+	cout << "          En pantalla debe verse:" << "\n";
+	cout << "          - RAM debe salir un número" << "\n";
+	cout << "          - ROM el número que aparece en RAM + 1" << "\n";
+	cout << "          - Contenido RAM debe ser igual al número que aparece en RAM" << "\n";
+	cout << "          - En PC debe aparecer el mismo número que aparece en RAM más 2" << "\n";
 #endif
 
 	for(int i = 0; i < 11; i++)
 	{
-		//clear(); para que es ese clear?
 		objRegistroA->escribir(to_string(i));
-		objRegistroD->escribir(to_string(i+1));
-		objPC->escribir(to_string(i+2));
+		objRegistroD->escribir(to_string((i*10)+1));
+		objPC->escribir(to_string((i*10)+2));
 
-#ifdef DEBUG
-		cout << "Antes:   RAM " << RAM->leer(i) << " - ROM " << ROM->leer(i) << "\n";
-#endif
-
-		RAM->escribir(i,to_string(i));
+		RAM->escribir(i,to_string(i*10));
 		ROM->escribir(i,objRegistroD->leer());
 		posicion = getPosicionRAM();
 
 #ifdef DEBUG
-		cout << "Despues: RAM " << RAM->leer(i) << " = ROM " << ROM->leer(i) << " = Contenido " << posicion <<"\n";
+		cout << "Posicion RAM[" << objRegistroA->leer() << "] = " << RAM->leer(i) << "\n";
+		cout << "Posicion ROM[" << objRegistroA->leer() << "] = " << ROM->leer(i) << "\n";
+		cout << "Contenido RAM leido = " << posicion << "\n";
+		cout << "PC = " << objPC->leer() <<"\n";
 #endif
 
 		cout << "Presione 1 y ENTER para continuar...";
 		cin >> posicion;
 	}
-	//clear(); para que??
 
 #ifdef DEBUG
 	cout << "Prueba 7: se visualizan los registros creados y se pintan." << "\n";
+	cout << "Presione 1 y ENTER para realizar la prueba...";
+	cin >> posicion;
 #endif
-
-	temp1 = new Pantalla(0,1,"Blanco", objRegistroA);
-	temp2 = new Pantalla(0,2,"Verde" , RAM);
-	temp3 = new Pantalla(0,3,"Rojo", getPosicionRAM());
+	clear();
+	temp1 = new Pantalla(3,1,"Blanco", objRegistroA);
+	temp2 = new Pantalla(3,2,"Verde" , RAM, objRegistroA);
+	temp3 = new Pantalla(3,3,"Rojo", getPosicionRAM());
 	temp1->pintar();
 	temp2->pintar();
 	temp3->pintar();
+
 	cout << "\nPresione 1 y ENTER para continuar...";
 	cin >> posicion;
-	//clear(); para que?
+	clear();
 	posicion = "";
 	
 #ifdef DEBUG
 	cout << "Prueba 8: se borran todos los objetos" << "\n";
 #endif
+
 	delete RAM;
 	delete ROM;
 	delete objRegistroA;
 	delete objRegistroD;
 	delete objPC;
-	delete temp1;
+	delete temp1;//pinches pantallas :(
 	delete temp2;
 	delete temp3;
 
 #ifdef DEBUG
-	cout << "Objeto registro A borrado.\n";
+	cout << "Objetos borrados sin error.\n";
+	cout << "Verificación terminada con éxito.\n";
 #endif
 }
 
@@ -148,5 +155,6 @@ int main(void)
 {
 	CPUHack* procesador = new CPUHack();
 	procesador->iniciar("Ensayo");
+
 	delete procesador;
 }

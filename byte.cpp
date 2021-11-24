@@ -4,7 +4,7 @@ Byte::Byte(){
 }
 
 Byte::~Byte(){
-   strContenido.clear();//????
+   strContenido.clear();
 }
 
 string Byte::leer(){

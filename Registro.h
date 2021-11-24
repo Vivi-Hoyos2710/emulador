@@ -15,5 +15,8 @@ class Registro: public Byte{
    Registro(string strNombre);
    ~Registro();
 
+   //getter del nombre
+   string getNombre();
+
 };
 #endif

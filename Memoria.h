@@ -19,6 +19,7 @@ public:
     ~Memoria();
     string leer(int numPosicion);
     void escribir(int numPosicion, string valor);
+    int getCapacidad();
 };
 
 #endif

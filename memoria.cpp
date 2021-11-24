@@ -3,20 +3,24 @@
 
 Memoria::Memoria(int numCapacidad)
 {
+    this->numCapacidad = numCapacidad;
+    
     for (int i = 0; i < numCapacidad; i++)
     {
-        arrMemoria.push_back(Byte()); //puede llenarse de lo que sea que no cumpla las condiciones de 16 bits
+        arrMemoria.push_back(Byte());
+        arrMemoria[i].escribir("0000000000000000");
     }
     
 }
 
 Memoria::~Memoria()
 {
+
 }
 
 string Memoria::leer(int numPosicion)
 {
-    if(arrMemoria[numPosicion].leer().length() < 16){
+    if(arrMemoria[numPosicion].leer() == "0000000000000000"){
         cout<<"error mío";
         throw "la dirección a la que se intenta acceder presenta un error";
     }
@@ -28,4 +32,8 @@ string Memoria::leer(int numPosicion)
 void Memoria::escribir(int numPosicion, string valor)
 {
     arrMemoria[numPosicion].escribir(valor); 
+}
+
+int Memoria::getCapacidad(){
+    return numCapacidad;
 }

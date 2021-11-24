@@ -1,10 +1,13 @@
 #include "registro.h"
 
-Registro:: Registro(string strNombre): Byte(){//y el constructor del padre?
+Registro:: Registro(string strNombre){
    this->strNombre = strNombre;
-   }
+}
 
 Registro::~Registro(){
-   strNombre.clear();//???
-   //el destructor del padre?
+   strNombre.clear();
+}
+
+string Registro::getNombre(){
+   return strNombre;
 }

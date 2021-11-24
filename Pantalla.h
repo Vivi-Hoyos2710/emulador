@@ -2,6 +2,7 @@
 #define pantalla_h
 
 #include <string>
+#include <iostream>
 #include "memoria.h"
 #include "registro.h"
 
@@ -15,14 +16,13 @@ private:
     int posY;
     string strColor;
     Registro* objRegistro;
-    //Registro objRegistro; habian dos objRegistro
     Memoria* objMemoria;
     string strValor;
     
 public:
 
     Pantalla(int x, int y, string strColor, Registro* objeto);
-    Pantalla(int x, int y, string strColor, Memoria* objeto);
+    Pantalla(int x, int y, string strColor, Memoria* objeto, Registro* objetoIndexador);
     Pantalla(int x, int y, string strColor, string valor);
     ~Pantalla();
     void pintar(); 
