@@ -1,3 +1,9 @@
+
+como hacerle para organizar las coordenadas???
+
+que ocurre con el delete de las temp 1 2 3 ???
+
+---------------------------------------
 -nombre en registro se refiere a PC A D??
 
 -en registro tambien pondremos registro M?  -> posicionROM y posicionRAM
@@ -8,7 +14,6 @@
 
 - objeto memoria de tipo registro
 
----------------------------------------
 -entrega anterior?
     nuevo nuevo 
 

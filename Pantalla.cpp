@@ -1,4 +1,5 @@
 #include "pantalla.h"
+#define gotoxy(x,y) printf("\033[%d;%dH", (y), (x))
 
 Pantalla::Pantalla(int x,int y,string strColor,Registro* objeto)
 {
@@ -36,35 +37,22 @@ Pantalla::~Pantalla()
     
     strColor.clear();
     strValor.clear();
-/*
-    delete objMemoria;
-    delete objRegistro;
-*/
 
 }
 
 void Pantalla::pintar(){
-    string saltosEnX ="";
-    for (int i = 0; i < posX; i++)
-    {
-        saltosEnX+="\t";
-    }
-
-    string saltosEnY ="";
-    for (int i = 0; i < posY; i++)
-    {
-        saltosEnY+="\n";
-    }
+    
+    gotoxy(posX,posY);
 
     //apartado del color
     //
 
     if(!objMemoria && !objRegistro){
-        cout<<saltosEnY<<saltosEnX<<this->strValor<<endl;
+        cout<<this->strValor;
     }else if(!objMemoria){
-        cout<<saltosEnY<<saltosEnX<<objRegistro->getNombre()<<": "<<objRegistro->leer()<<endl;
+        cout<<objRegistro->getNombre()<<": "<<objRegistro->leer();
     }else{
-        cout<<saltosEnY<<saltosEnX<<objMemoria->leer(stoi(objRegistro->leer()))<<endl;
+        cout<<objMemoria->leer(stoi(objRegistro->leer()));
     }
 
 }

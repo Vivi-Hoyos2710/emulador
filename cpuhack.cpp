@@ -5,6 +5,7 @@
 #include "pantalla.h"
 
 #define clear() cout << "\033[H\033[J"
+#define gotoxy(x,y) printf("\033[%d;%dH", (y), (x))
 #define DEBUG
 using namespace std;
 
@@ -116,9 +117,9 @@ void CPUHack::iniciar(string strPrograma)
 	cin >> posicion;
 #endif
 	clear();
-	temp1 = new Pantalla(3,1,"Blanco", objRegistroA);
-	temp2 = new Pantalla(3,2,"Verde" , RAM, objRegistroA);
-	temp3 = new Pantalla(3,3,"Rojo", getPosicionRAM());
+	temp1 = new Pantalla(0,1,"Blanco", objRegistroA);
+	temp2 = new Pantalla(0,2,"Verde" , RAM, objRegistroA);
+	temp3 = new Pantalla(0,3,"Rojo", getPosicionRAM());
 	temp1->pintar();
 	temp2->pintar();
 	temp3->pintar();
@@ -137,7 +138,7 @@ void CPUHack::iniciar(string strPrograma)
 	delete objRegistroA;
 	delete objRegistroD;
 	delete objPC;
-	delete temp1;//pinches pantallas :(
+	delete temp1;
 	delete temp2;
 	delete temp3;
 
