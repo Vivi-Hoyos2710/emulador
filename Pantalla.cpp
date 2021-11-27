@@ -39,7 +39,7 @@ Pantalla::~Pantalla()
     strValor.clear();
 
 }
-int indiceColor(string color){
+int Pantalla::indiceColor(string color){
     
     int indice=TablaColor[color];
     if (indice==0){
@@ -63,15 +63,13 @@ void Pantalla::pintar(){
     if(!objMemoria && !objRegistro){
         SetConsoleTextAttribute(hConsole, indiceColor(strColor));
         cout<<this->strValor;
-        SetConsoleTextAttribute(hConsole, indiceColor("Blanco"));
     }else if(!objMemoria){
         SetConsoleTextAttribute(hConsole, indiceColor(strColor));
         cout<<objRegistro->getNombre()<<": "<<objRegistro->leer();
-        SetConsoleTextAttribute(hConsole, indiceColor("Blanco"));
     }else{
         SetConsoleTextAttribute(hConsole, indiceColor(strColor));
         cout<<objMemoria->leer(stoi(objRegistro->leer()));
-        SetConsoleTextAttribute(hConsole, indiceColor("Blanco"));
-    }
 
+    }
+    SetConsoleTextAttribute(hConsole, indiceColor("Blanco"));
 }
